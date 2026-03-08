@@ -1,6 +1,7 @@
 from diffusers import StableDiffusionXLPipeline
 import torch
 import gc
+from datetime import datetime
 
 print("Loading RealVisXL V4.0 (photorealistic model)...")
 pipe = StableDiffusionXLPipeline.from_pretrained(
@@ -29,8 +30,10 @@ for i in range(5):
         generator=torch.Generator("cuda").manual_seed(i)
     ).images[0]
     
-    image.save(f"realvis_{i+1}.png")
-    print(f"✅ Saved realvis_{i+1}.png")
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    filename = f"images/realvis_{timestamp}.png"
+    image.save(filename)
+    print(f"✅ Saved realvis_{timestamp}.png")
     
     del image
     torch.cuda.empty_cache()
