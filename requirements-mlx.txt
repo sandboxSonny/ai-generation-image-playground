@@ -1,0 +1,13 @@
+# Apple Silicon (MLX) install: pip install -r requirements-mlx.txt
+gradio
+openai
+python-dotenv
+pillow
+mflux
+mlx-lm
+# only needed for IMAGE_BACKEND=mps or test_gpu.py
+torch
+diffusers
+transformers
+accelerate
+safetensors
